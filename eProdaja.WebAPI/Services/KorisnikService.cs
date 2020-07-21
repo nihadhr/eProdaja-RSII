@@ -34,7 +34,8 @@ namespace eProdaja.Model.Services
                 throw new Exception("Lozinke se ne poklapaju !");
             }
             obj.LozinkaHash = "test1";
-            obj.LozinkaSalt = "twst2";
+            obj.LozinkaSalt = "test2";
+            //comment
             _database.Korisnici.Add(obj);
             _database.SaveChanges();
             return _mapper.Map<Model.Korisnici>(obj);
