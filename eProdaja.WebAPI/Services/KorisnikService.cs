@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using eProdaja.Model.Database;
 using AutoMapper;
 using eProdaja.Model.Requests;
+using eProdaja.WebAPI.Exceptions;
 
 namespace eProdaja.Model.Services
 {
@@ -18,11 +19,19 @@ namespace eProdaja.Model.Services
             _database = db;
             _mapper = mapper;
         }
-        public List<Model.Korisnici> Get(){
+        public List<Model.Korisnici> Get(KorisniciSearchRequest request){
 
-            var list= _database.Korisnici.ToList();
-
-            return _mapper.Map<List<Model.Korisnici>>(list);
+            var list = _database.Korisnici.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(request.Ime))
+            {
+                list = list.Where(a => a.Ime.StartsWith(request.Ime));
+            }
+            if (!string.IsNullOrWhiteSpace(request.Prezime))
+            {
+                list = list.Where(a => a.Prezime.StartsWith(request.Prezime));
+            }
+                
+            return _mapper.Map<List<Model.Korisnici>>(list.ToList());
 
         }
 
@@ -31,11 +40,10 @@ namespace eProdaja.Model.Services
             var obj = _mapper.Map<Database.Korisnici>(request);
             if(request.Password != request.PasswordConfirmation)
             {
-                throw new Exception("Lozinke se ne poklapaju !");
-            }
+                throw new UserException("Lozinke se ne poklapaju !");
+            } 
             obj.LozinkaHash = "test1";
             obj.LozinkaSalt = "test2";
-            //comment
             _database.Korisnici.Add(obj);
             _database.SaveChanges();
             return _mapper.Map<Model.Korisnici>(obj);

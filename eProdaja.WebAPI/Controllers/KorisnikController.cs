@@ -20,9 +20,9 @@ namespace eProdaja.Model.Controllers
             _korisnik = korisnik;
         }
         [HttpGet]
-        public ActionResult<List<Model.Korisnici>> Get()
+        public ActionResult<List<Model.Korisnici>> Get([FromQuery]KorisniciSearchRequest request)
         {
-            return _korisnik.Get();
+            return _korisnik.Get(request);
         }
         [HttpPost]
         public Model.Korisnici Insert(KorisniciInsert request)

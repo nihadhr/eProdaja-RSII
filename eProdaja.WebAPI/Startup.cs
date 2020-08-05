@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 using eProdaja.WebAPI.Mappers;
+using eProdaja.WebAPI.Filters;
 
 namespace eProdaja.Model
 {
@@ -32,6 +33,7 @@ namespace eProdaja.Model
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMvc(x => x.Filters.Add<ErrorFilter>());
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen();
             services.AddScoped<IProizvod, ProizvodService>();
