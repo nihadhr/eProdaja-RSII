@@ -29,6 +29,16 @@ namespace eProdaja.Model.Controllers
         {
             return _korisnik.Insert(request);
         }
+        [HttpGet("{id}")]
+        public Model.Korisnici GetById(int id)
+        {
+            return _korisnik.GetById(id);
+        }
+        [HttpPut("{id}")]
+        public Model.Korisnici Update(int id,[FromBody]KorisniciInsert rikvest)
+        {
+            return _korisnik.Update(id, rikvest);
+        }
 
     } 
 }

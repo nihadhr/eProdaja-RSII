@@ -23,7 +23,10 @@ namespace eProdaja.WinUI.Korisnici
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            var id = dgvTabela.Rows[e.RowIndex].Cells[0].Value;
 
+            frmKorisnikDetalji frm = new frmKorisnikDetalji(int.Parse(id.ToString()));
+            frm.Show();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -35,14 +38,18 @@ namespace eProdaja.WinUI.Korisnici
         {
             var rikvest = new KorisniciSearchRequest {
                 Ime = txtIme.Text,
-                Prezime = txtPrezime.Text
+                Prezime = txtPrezime.Text,
+                KorisnickoIme=txtUsername.Text
             };
 
-
+            dgvTabela.AutoGenerateColumns = false;
             var result = await _apiservice.Get<List<Model.Korisnici>>(rikvest);
             dgvTabela.DataSource = result;
         }
 
-      
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

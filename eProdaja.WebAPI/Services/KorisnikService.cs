@@ -30,7 +30,11 @@ namespace eProdaja.Model.Services
             {
                 list = list.Where(a => a.Prezime.StartsWith(request.Prezime));
             }
-                
+            if (!string.IsNullOrWhiteSpace(request.KorisnickoIme))
+            {
+                list = list.Where(a => a.Prezime.StartsWith(request.KorisnickoIme));
+            }
+
             return _mapper.Map<List<Model.Korisnici>>(list.ToList());
 
         }
@@ -45,6 +49,31 @@ namespace eProdaja.Model.Services
             obj.LozinkaHash = "test1";
             obj.LozinkaSalt = "test2";
             _database.Korisnici.Add(obj);
+            _database.SaveChanges();
+            return _mapper.Map<Model.Korisnici>(obj);
+        }
+
+        public Korisnici GetById(int id)
+        {
+            var obj = _database.Korisnici.Find(id);
+            return _mapper.Map<Model.Korisnici>(obj);
+        }
+
+        public Korisnici Update(int id,KorisniciInsert rikvest)
+        {
+            var obj = _database.Korisnici.Find(id);
+            //_database.Korisnici.Attach(obj);
+            //_database.Korisnici.Update(obj);
+            if (rikvest.Password != rikvest.PasswordConfirmation && rikvest.Password.Length !=0)
+            {
+                throw new UserException("Lozinke se ne poklapaju !");
+            } 
+            //hashing pass
+
+            //obj = _mapper.Map<Database.Korisnici>(rikvest);
+            _mapper.Map(rikvest, obj);
+            obj.LozinkaHash = "test1";
+            obj.LozinkaSalt = "test2";
             _database.SaveChanges();
             return _mapper.Map<Model.Korisnici>(obj);
         }

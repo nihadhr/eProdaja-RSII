@@ -23,11 +23,30 @@ namespace eProdaja.WinUI
             if (rikvest != null)
             {
                 url += "?"; //query string pocinje 
-                url += await rikvest.ToQueryString();
+                url += await rikvest.ToQueryString();  //kreiranje kveri stringa, posebna klasa.
             }
             var result = await url.GetJsonAsync<T>();
             return result;
             
         }
+        public async Task<T> GetById<T>(object id)
+        {
+            var url = $"{Properties.Settings.Default.APIurl}/{_route}/{id}";
+
+            return await url.GetJsonAsync<T>() ;
+            
+
+        }
+        public async Task<T> Insert<T>(object rikvest)
+        {
+            var url = $"{Properties.Settings.Default.APIurl}/{_route}";
+            return await url.PostJsonAsync(rikvest).ReceiveJson<T>();
+        }
+        public async Task<T> Update<T>(object id,object rikvest)
+        {
+            var url = $"{Properties.Settings.Default.APIurl}/{_route}/{id}";
+            return await url.PutJsonAsync(rikvest).ReceiveJson<T>();
+        }
+
     }
 }
