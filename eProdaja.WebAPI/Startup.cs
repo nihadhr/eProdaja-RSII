@@ -17,6 +17,7 @@ using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 using eProdaja.WebAPI.Mappers;
 using eProdaja.WebAPI.Filters;
+using eProdaja.WebAPI.Services;
 
 namespace eProdaja.Model
 {
@@ -38,9 +39,11 @@ namespace eProdaja.Model
             services.AddSwaggerGen();
             services.AddScoped<IProizvod, ProizvodService>();
             services.AddScoped<IKorisnik, KorisnikService>();
+            services.AddScoped<IGeneric<Model.JediniceMjere, object>, GenericService<Model.JediniceMjere,Model.Database.JediniceMjere, object>>();
+            services.AddScoped<IGeneric<Model.VrsteProizvoda,object>, GenericService<Model.VrsteProizvoda,Database.VrsteProizvoda,object>>();
 
             var connection = @"Server=.;Database=eProdaja;Trusted_Connection=True;";
-            services.AddDbContext<eProdajaContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<eProdajaContext>(options => options.UseSqlServer(connection)); 
 
         }
 

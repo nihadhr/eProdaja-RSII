@@ -98,7 +98,7 @@ namespace eProdaja.WinUI.Korisnici
         {
             if (string.IsNullOrWhiteSpace(txtIme.Text))
             {
-                errorProvider1.SetError(txtIme, "Obavezno polje");
+                errorProvider1.SetError(txtIme,Properties.Resources.Validation_RequiredField_BS);
                 e.Cancel = true;
             }
             else
@@ -123,7 +123,7 @@ namespace eProdaja.WinUI.Korisnici
         {
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                errorProvider1.SetError(txtEmail, "Obavezno polje");
+                errorProvider1.SetError(txtEmail, Properties.Resources.Validation_RequiredField_BS);
                 e.Cancel = true;
             }
             else
@@ -136,7 +136,7 @@ namespace eProdaja.WinUI.Korisnici
         {
             if (string.IsNullOrWhiteSpace(txtTelefon.Text))
             {
-                errorProvider1.SetError(txtTelefon, "Obavezno polje");
+                errorProvider1.SetError(txtTelefon, Properties.Resources.Validation_RequiredField_BS);
                 e.Cancel = true;
             }
             else if(!Regex.Match(txtTelefon.Text, "[+3876][0-9]{7,8}").Success)
@@ -154,7 +154,7 @@ namespace eProdaja.WinUI.Korisnici
         {
             if (string.IsNullOrWhiteSpace(txtKorisnicko.Text))
             {
-                errorProvider1.SetError(txtKorisnicko, "Obavezno polje");
+                errorProvider1.SetError(txtKorisnicko, Properties.Resources.Validation_RequiredField_BS);
                 e.Cancel = true;
             }
             else if(txtKorisnicko.Text.Length < 3)

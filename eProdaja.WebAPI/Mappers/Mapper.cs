@@ -15,6 +15,8 @@ namespace eProdaja.WebAPI.Mappers
         {
             CreateMap<Korisnici, Model.Korisnici>();
             CreateMap<Korisnici, KorisniciInsert>().ReverseMap();
+            CreateMap<JediniceMjere, Model.JediniceMjere>();
+            CreateMap<VrsteProizvoda, Model.VrsteProizvoda>();
         }
     }
 }
