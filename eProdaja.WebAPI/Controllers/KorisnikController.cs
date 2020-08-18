@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using eProdaja.Model;
 using eProdaja.Model.Requests;
 using eProdaja.Model.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace eProdaja.Model.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class KorisnikController : ControllerBase 
     {
         private IKorisnik _korisnik;
@@ -24,11 +26,6 @@ namespace eProdaja.Model.Controllers
         {
             return _korisnik.Get(request);
         }
-        [HttpPost]
-        public Model.Korisnici Insert(KorisniciInsert request)
-        {
-            return _korisnik.Insert(request);
-        }
         [HttpGet("{id}")]
         public Model.Korisnici GetById(int id)
         {
@@ -38,6 +35,12 @@ namespace eProdaja.Model.Controllers
         public Model.Korisnici Update(int id,[FromBody]KorisniciInsert rikvest)
         {
             return _korisnik.Update(id, rikvest);
+        }
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        public Model.Korisnici Insert(KorisniciInsert request)
+        {
+            return _korisnik.Insert(request);
         }
 
     } 

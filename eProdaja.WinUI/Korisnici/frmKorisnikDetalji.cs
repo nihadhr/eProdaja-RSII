@@ -15,6 +15,7 @@ namespace eProdaja.WinUI.Korisnici
     public partial class frmKorisnikDetalji : Form
     {
         private APIService _apiservice = new APIService("Korisnik");
+        private APIService _apiservice2 = new APIService("Uloge");
         private int? _id = null;
         public frmKorisnikDetalji(int? id=null)
         {
@@ -30,6 +31,10 @@ namespace eProdaja.WinUI.Korisnici
                 txtKorisnicko.Text = obj.KorisnickoIme; txtEmail.Text = obj.Email;
                 txtTelefon.Text = obj.Telefon;
             }
+            var uloge = await _apiservice2.Get<List<Model.Uloge>>(null);
+            clbUloge.DisplayMember = "Role";
+            clbUloge.DataSource = uloge; 
+
         }
        
 
@@ -70,6 +75,7 @@ namespace eProdaja.WinUI.Korisnici
             //}
             if (this.ValidateChildren())
             {
+                var uloge = clbUloge.CheckedItems.Cast<Model.Uloge>().Select(a=>a.UlogaId).ToList();
                 var objekt = new KorisniciInsert
                 {
                     Ime = txtIme.Text,
@@ -78,7 +84,11 @@ namespace eProdaja.WinUI.Korisnici
                     KorisnickoIme = txtKorisnicko.Text,
                     Telefon = txtTelefon.Text,
                     Password = txtLozinka.Text,
-                    PasswordConfirmation = txtLozinka1.Text
+                    PasswordConfirmation = txtLozinka1.Text,
+                    Status = chxAktivan.Checked,
+                    Uloge=uloge
+
+                    
                 };
                 if (_id.HasValue)
                 {
@@ -166,6 +176,21 @@ namespace eProdaja.WinUI.Korisnici
             {
                 errorProvider1.SetError(txtKorisnicko, null); 
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

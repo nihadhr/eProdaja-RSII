@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.clbUloge = new System.Windows.Forms.CheckedListBox();
+            this.chxAktivan = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtLozinka1 = new System.Windows.Forms.TextBox();
@@ -54,6 +57,9 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.clbUloge);
+            this.groupBox1.Controls.Add(this.chxAktivan);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.txtLozinka1);
@@ -72,9 +78,44 @@
             this.groupBox1.Controls.Add(this.txtIme);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(373, 392);
+            this.groupBox1.Size = new System.Drawing.Size(373, 469);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Gray;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label9.Location = new System.Drawing.Point(16, 341);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(52, 18);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Uloge";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // clbUloge
+            // 
+            this.clbUloge.FormattingEnabled = true;
+            this.clbUloge.Location = new System.Drawing.Point(153, 341);
+            this.clbUloge.Name = "clbUloge";
+            this.clbUloge.Size = new System.Drawing.Size(120, 64);
+            this.clbUloge.TabIndex = 17;
+            this.clbUloge.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            // 
+            // chxAktivan
+            // 
+            this.chxAktivan.AutoSize = true;
+            this.chxAktivan.Checked = true;
+            this.chxAktivan.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chxAktivan.Location = new System.Drawing.Point(153, 411);
+            this.chxAktivan.Name = "chxAktivan";
+            this.chxAktivan.Size = new System.Drawing.Size(68, 17);
+            this.chxAktivan.TabIndex = 16;
+            this.chxAktivan.Text = "Aktivan?";
+            this.chxAktivan.UseVisualStyleBackColor = true;
+            this.chxAktivan.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // label1
             // 
@@ -92,7 +133,7 @@
             this.btnSave.BackColor = System.Drawing.Color.Gray;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSave.Location = new System.Drawing.Point(196, 339);
+            this.btnSave.Location = new System.Drawing.Point(196, 434);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 15;
@@ -250,7 +291,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 408);
+            this.ClientSize = new System.Drawing.Size(398, 494);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmKorisnikDetalji";
             this.Text = "frmDodajKorisnika";
@@ -282,5 +323,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.CheckBox chxAktivan;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckedListBox clbUloge;
     }
 }

@@ -20,6 +20,8 @@ namespace eProdaja.Model.Requests
         public string KorisnickoIme { get; set; }
         public string Password { get; set; }
         public string PasswordConfirmation { get; set; }
+        public bool Status { get; set; }
+        public List<int> Uloge { get; set; } = new List<int>();
 
     }
 }

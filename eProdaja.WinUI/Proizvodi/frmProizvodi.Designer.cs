@@ -37,11 +37,16 @@
             this.txtNaziv = new System.Windows.Forms.TextBox();
             this.txtCijena = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtSlikaInput = new System.Windows.Forms.TextBox();
             this.btnDodaj = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.cmbVrsteProizvoda = new System.Windows.Forms.ComboBox();
             this.cmbJediniceMjere = new System.Windows.Forms.ComboBox();
+            this.dgvTabela = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTabela)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label
@@ -126,12 +131,13 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Jed. mjere:";
             // 
-            // textBox6
+            // txtSlikaInput
             // 
-            this.textBox6.Location = new System.Drawing.Point(138, 125);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(208, 20);
-            this.textBox6.TabIndex = 11;
+            this.txtSlikaInput.Location = new System.Drawing.Point(138, 125);
+            this.txtSlikaInput.Name = "txtSlikaInput";
+            this.txtSlikaInput.Size = new System.Drawing.Size(208, 20);
+            this.txtSlikaInput.TabIndex = 11;
+            this.txtSlikaInput.TextChanged += new System.EventHandler(this.txtSlikaInput_TextChanged);
             // 
             // btnDodaj
             // 
@@ -141,15 +147,17 @@
             this.btnDodaj.TabIndex = 12;
             this.btnDodaj.Text = "Dodaj";
             this.btnDodaj.UseVisualStyleBackColor = true;
+            this.btnDodaj.Click += new System.EventHandler(this.btnDodaj_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(233, 174);
+            this.btnSave.Location = new System.Drawing.Point(516, 188);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(113, 42);
             this.btnSave.TabIndex = 13;
             this.btnSave.Text = "Sačuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // cmbVrsteProizvoda
             // 
@@ -158,6 +166,8 @@
             this.cmbVrsteProizvoda.Name = "cmbVrsteProizvoda";
             this.cmbVrsteProizvoda.Size = new System.Drawing.Size(208, 21);
             this.cmbVrsteProizvoda.TabIndex = 16;
+            this.cmbVrsteProizvoda.SelectedIndexChanged += new System.EventHandler(this.cmbVrsteProizvoda_SelectedIndexChanged);
+            this.cmbVrsteProizvoda.ValueMemberChanged += new System.EventHandler(this.cmbVrsteProizvoda_ValueMemberChanged);
             // 
             // cmbJediniceMjere
             // 
@@ -167,16 +177,40 @@
             this.cmbJediniceMjere.Size = new System.Drawing.Size(62, 21);
             this.cmbJediniceMjere.TabIndex = 17;
             // 
+            // dgvTabela
+            // 
+            this.dgvTabela.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTabela.Location = new System.Drawing.Point(13, 236);
+            this.dgvTabela.Name = "dgvTabela";
+            this.dgvTabela.Size = new System.Drawing.Size(616, 202);
+            this.dgvTabela.TabIndex = 18;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(477, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(152, 124);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 19;
+            this.pictureBox1.TabStop = false;
+            // 
             // frmProizvodi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(641, 450);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.dgvTabela);
             this.Controls.Add(this.cmbJediniceMjere);
             this.Controls.Add(this.cmbVrsteProizvoda);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnDodaj);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtSlikaInput);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCijena);
             this.Controls.Add(this.txtNaziv);
@@ -189,6 +223,8 @@
             this.Name = "frmProizvodi";
             this.Text = "frmProizvodi";
             this.Load += new System.EventHandler(this.frmProizvodi_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTabela)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,10 +241,13 @@
         private System.Windows.Forms.TextBox txtNaziv;
         private System.Windows.Forms.TextBox txtCijena;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtSlikaInput;
         private System.Windows.Forms.Button btnDodaj;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.ComboBox cmbVrsteProizvoda;
         private System.Windows.Forms.ComboBox cmbJediniceMjere;
+        private System.Windows.Forms.DataGridView dgvTabela;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

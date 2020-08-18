@@ -9,10 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eProdaja.WebAPI.Controllers
 {
-    public class VrsteProizvodaController : GenericController<Model.VrsteProizvoda, Model.Database.VrsteProizvoda, object>
+    public class VrsteProizvodaController : GenericController<Model.VrsteProizvoda,object>
     {
         public VrsteProizvodaController(IGeneric<VrsteProizvoda, object> service) : base(service)
         {
+
         }
     }
 }

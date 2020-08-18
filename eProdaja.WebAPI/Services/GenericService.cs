@@ -9,21 +9,21 @@ namespace eProdaja.WebAPI.Services
 {
     public class GenericService<TModel,TDatabase,TSearchRequest> : IGeneric<TModel,TSearchRequest>where TDatabase: class
     {
-        private eProdajaContext _database;
-        private IMapper _mapper;
+        public eProdajaContext _database;
+        public IMapper _mapper;
         public GenericService(eProdajaContext database, IMapper mapper)
         {
             _mapper = mapper;
             _database = database;
         }
 
-        public List<TModel> Get(TSearchRequest request)
+        public virtual List<TModel> Get(TSearchRequest request)
         {
             var list = _database.Set<TDatabase>().ToList();
             return _mapper.Map<List<TModel>>(list);
         }
 
-        public TModel GetById(int id)
+        public virtual TModel GetById(int id)
         {
             var obj = _database.Set<TDatabase>().Find(id);
             return _mapper.Map<TModel>(obj);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace eProdaja.Model
@@ -12,8 +13,10 @@ namespace eProdaja.Model
         public string Email { get; set; }
         public string Telefon { get; set; }
         public string KorisnickoIme { get; set; }
-
         public bool? Status { get; set; }
+        [JsonIgnore]
+        public ICollection<KorisniciUloge> KorisniciUloge { get; set; }
+
 
     }
 }
