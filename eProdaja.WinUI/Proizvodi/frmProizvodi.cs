@@ -84,6 +84,9 @@ namespace eProdaja.WinUI.Proizvodi
             novi.Naziv = txtNaziv.Text;
             novi.Sifra = txtSifra.Text;
             await _proizvodi.Insert<Model.Proizvod>(novi);
+            txtNaziv.Text = "";
+            cmbVrsteProizvoda_SelectedIndexChanged(sender,e);
+
             
         }
 

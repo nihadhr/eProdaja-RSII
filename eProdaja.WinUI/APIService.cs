@@ -15,9 +15,9 @@ namespace eProdaja.WinUI
         private string _route = null;
         public static string Username { get; set; }
         public static string Password { get; set; }
-        public APIService(string r)
+        public APIService(string route)
         {
-            _route = r;
+            _route = route;
         }
 
         public async Task<T> Get<T>(object rikvest)
@@ -27,7 +27,7 @@ namespace eProdaja.WinUI
             if (rikvest != null)
             {
                 url += "?"; //query string pocinje 
-                url += await rikvest.ToQueryString();  //kreiranje kveri stringa, posebna klasa.
+                url += await rikvest.ToQueryString();  //kreiranje kveri stringa, posebna klasa sa fjom.
             }
             var result = await url.WithBasicAuth(Username,Password).GetJsonAsync<T>();
             return result;
@@ -36,10 +36,8 @@ namespace eProdaja.WinUI
         public async Task<T> GetById<T>(object id)
         {
             var url = $"{Properties.Settings.Default.APIurl}/{_route}/{id}";
-
             return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>() ;
             
-
         }
         public async Task<T> Insert<T>(object rikvest)
         {
