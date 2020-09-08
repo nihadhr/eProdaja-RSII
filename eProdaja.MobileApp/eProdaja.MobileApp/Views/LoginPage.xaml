@@ -7,7 +7,7 @@
              x:Class="eProdaja.MobileApp.Views.LoginPage"
              Shell.NavBarIsVisible="False" BackgroundColor="MediumPurple">
     <ContentPage.BindingContext>
-        <vm:LoginViewModel/>
+        <vm:LoginViewModel/> 
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
@@ -20,4 +20,4 @@
             
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</ContentPage> 

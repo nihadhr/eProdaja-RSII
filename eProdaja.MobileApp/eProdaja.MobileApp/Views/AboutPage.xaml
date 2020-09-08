@@ -45,7 +45,12 @@
                         Command="{Binding OpenWebCommand}"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
+
+                <Label TextColor="Red" Text="{Binding DisplayCount}"/>
+                <Button Text="Increase count" Command="{Binding IncreaseCommand}"></Button>
             </StackLayout>
+
+            
         </ScrollView>
     </Grid>
 
