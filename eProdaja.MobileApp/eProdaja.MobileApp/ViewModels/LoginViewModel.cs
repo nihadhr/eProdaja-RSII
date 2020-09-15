@@ -41,7 +41,7 @@ namespace eProdaja.MobileApp.ViewModels
             {
                 await _apiservice.Get<dynamic>(null);
                 //frmLogin.ActiveForm.Close();
-                Application.Current.MainPage = new AboutPage();
+                Application.Current.MainPage = new AppShell();
 
             }
             catch (Exception ex)

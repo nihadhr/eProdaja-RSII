@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eProdaja.MobileApp.Views.Page1">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness"
+                iOS="0,20,0,0"
+                Android="5,10,5,5">
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+       
+
+        <StackLayout HorizontalOptions="Center">
+        <Button Text="Next" Clicked="Button_Clicked" ></Button>
+
+            <!--<BoxView Color="WhiteSmoke" Opacity="{Binding Value}"></BoxView>-->
+            <StackLayout> <Label  BindingContext="{Binding Source={x:Reference slider}}"
+                   Text="{Binding Value,StringFormat='Font size is: {0:N0}'}"/>
+                   <!--FontSize="{Binding Value}"--></StackLayout>
+
+            <StackLayout>
+                <Slider x:Name="slider" Maximum="50" Minimum="16"></Slider> </StackLayout>
+                                
+        
+                <Label 
+                   x:Name="CurrentTxt"
+                   FontSize="{Binding Source={x:Reference slider},Path=Value}"
+                   />
+         </StackLayout>
+       
+    </ContentPage.Content>
+</ContentPage>

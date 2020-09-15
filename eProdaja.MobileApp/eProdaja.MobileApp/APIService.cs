@@ -15,7 +15,7 @@ namespace eProdaja.MobileApp
         public static string Password { get; set; }
 #if DEBUG
         //private string _apiURL = "https://localhost:44318/api";  //with https
-          private string _apiURL = "http://localhost:57637/api";
+          private string _apiURL = "http://localhost:57637/api";  //zbog certifikata.
 #endif
 #if RELEASE
         private string _apiURL="https://mysite/api";

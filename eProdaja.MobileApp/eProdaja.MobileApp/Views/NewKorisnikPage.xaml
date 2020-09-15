@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eProdaja.MobileApp.Views.NewKorisnikPage"
+    xmlns:vm="clr-namespace:eProdaja.MobileApp.ViewModels">
+    <ContentPage.BindingContext>
+        <vm:NewKorisnikVM/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+    <StackLayout Spacing="3" Padding="20">
+            <Label Text="Ime" FontSize="Small" />
+            <Entry Text="{Binding _request.Ime}" FontSize="Small" />
+            <Label Text="Prezime" FontSize="Small" />
+        <Editor Text="{Binding _request.Prezime}" AutoSize="TextChanges" FontSize="Small" Margin="0" />
+            <Label Text="Email" FontSize="Small" />
+        <Entry IsSpellCheckEnabled="False" Text="{Binding _request.Email}" FontSize="Small" />
+            <Label Text="Telefon" FontSize="Small" />
+        <Entry Text="{Binding _request.Telefon}" FontSize="Small" />
+            <Label Text="Korisnicko ime" FontSize="Small" />
+        <Entry Text="{Binding _request.KorisnickoIme}" FontSize="Small" />
+            <Label Text="Password" FontSize="Small" />
+            <Entry IsPassword="True" Text="{Binding _request.Password}" FontSize="Small" />
+            <Label Text="Password confirmation" FontSize="Small" />
+            <Entry IsPassword="True" Text="{Binding _request.PasswordConfirmation}" FontSize="Small" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Otkaži" Command="{Binding Cancel}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Spremi" Command="{Binding Save}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
