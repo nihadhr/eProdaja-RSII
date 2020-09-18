@@ -119,8 +119,19 @@ namespace eProdaja.Model.Services
 
             //obj = _mapper.Map<Database.Korisnici>(rikvest);
             _mapper.Map(rikvest, obj);
-            obj.LozinkaHash = "test1";
-            obj.LozinkaSalt = "test2";
+            obj.LozinkaSalt = GenerateSalt();
+            obj.LozinkaHash = GenerateHash(obj.LozinkaSalt, rikvest.Password);
+            foreach (var x in rikvest.Uloge)
+            {
+                var list = _database.KorisniciUloge.Where(a => a.KorisnikId == obj.KorisnikId);
+                _database.KorisniciUloge.RemoveRange(list);
+                _database.KorisniciUloge.Add(new Database.KorisniciUloge()
+                {
+                    DatumIzmjene = DateTime.Now,
+                    UlogaId = x,
+                    KorisnikId = obj.KorisnikId
+                });
+            }
             _database.SaveChanges();
             return _mapper.Map<Model.Korisnici>(obj);
         }

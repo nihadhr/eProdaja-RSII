@@ -7,6 +7,7 @@ namespace eProdaja.Model
     public class Uloge
     {
         public int UlogaId { get; set; }
+        public bool IsChecked { get; set; }
         public string Naziv { get; set; }
         public string Opis { get; set; }
     }

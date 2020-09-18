@@ -20,6 +20,10 @@ namespace eProdaja.MobileApp.Views
             InitializeComponent();
             BindingContext = model = new NewKorisnikVM();
         }
-       
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await model.Init();
+        }
     }
 }

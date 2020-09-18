@@ -6,8 +6,11 @@
     <ContentPage.BindingContext>
         <vm:NewKorisnikVM/>
     </ContentPage.BindingContext>
+    
     <ContentPage.Content>
+        
         <ScrollView>
+            
     <StackLayout Spacing="3" Padding="20">
             <Label Text="Ime" FontSize="Small" />
             <Entry Text="{Binding _request.Ime}" FontSize="Small" />
@@ -20,14 +23,35 @@
             <Label Text="Korisnicko ime" FontSize="Small" />
         <Entry Text="{Binding _request.KorisnickoIme}" FontSize="Small" />
             <Label Text="Password" FontSize="Small" />
-            <Entry IsPassword="True" Text="{Binding _request.Password}" FontSize="Small" />
+        <Entry IsPassword="True" Text="{Binding _request.Password}" FontSize="Small" />
             <Label Text="Password confirmation" FontSize="Small" />
-            <Entry IsPassword="True" Text="{Binding _request.PasswordConfirmation}" FontSize="Small" />
-            <StackLayout Orientation="Horizontal">
+         <Entry IsPassword="True" Text="{Binding _request.PasswordConfirmation}" FontSize="Small" />
+                <StackLayout Orientation="Horizontal"><Label Text="Aktivan" FontSize="Small" />
+         <CheckBox IsChecked="{Binding _request.Status}"></CheckBox></StackLayout>
+            
+            <Label Text="Uloge" FontSize="Small" />
+
+                <Grid>
+                    <ListView ItemsSource="{Binding Uloge}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal">
+                                        <CheckBox IsChecked="{Binding IsChecked}">
+                                        </CheckBox>
+                                        <Label Text="{Binding Naziv}"></Label>
+                                    </StackLayout>
+                                </ViewCell>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+                <StackLayout  Orientation="Horizontal">
                 <Button Text="Otkaži" Command="{Binding Cancel}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Spremi" Command="{Binding Save}" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
-        </StackLayout>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -17,17 +17,29 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Label Text="{Binding Ime}"
+                         <StackLayout Orientation="Horizontal" Padding="10">
+                             <!--<StackLayout WidthRequest="0.7" >-->
+                                  <Label Text="{Binding Ime}"
                                     LineBreakMode="NoWrap" 
-                            Style="{DynamicResource ListItemTextStyle}" 
-                            FontSize="16" />
-                                <Label Text="{Binding Email}" 
-                            LineBreakMode="NoWrap"
-                            Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="13" />
-                            </StackLayout>
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                  <Label Text="{Binding Email}" 
+                                    LineBreakMode="NoWrap"
+                                    Style="{DynamicResource ListItemDetailTextStyle}" 
+                                    FontSize="13" />
+                              <!--</StackLayout>-->
                             
+                                    <!--<Button Command="{Binding EditKorisnik}"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Text="Edit"></Button>-->
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                NumberOfTapsRequired="2"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:KorisniciVM}}, Path=KorisnikTapped}"		
+                                CommandParameter="{Binding}">
+                                        </TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                              
+                         </StackLayout>
+
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
