@@ -17,7 +17,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                         <StackLayout Orientation="Horizontal" Padding="10">
+                         <StackLayout Padding="10">
                              <!--<StackLayout WidthRequest="0.7" >-->
                                   <Label Text="{Binding Ime}"
                                     LineBreakMode="NoWrap" 

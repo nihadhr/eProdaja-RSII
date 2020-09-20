@@ -35,7 +35,8 @@ namespace eProdaja.MobileApp.ViewModels
             if (obj == null)
                 return;
             //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
-            await Shell.Current.GoToAsync($"{nameof(NewKorisnikPage)}?{nameof(NewKorisnikVM.KorisnikID)}={obj.KorisnikId}");
+            //await Shell.Current.GoToAsync($"{nameof(NewKorisnikPage)}?{nameof(NewKorisnikVM.KorisnikID)}={obj.KorisnikId}");
+            await Shell.Current.GoToAsync($"{nameof(KorisnikDetailPage)}?{nameof(KorisnikDetailVM.KorisnikID)}={obj.KorisnikId}");
         }
 
         public ObservableCollection<Korisnici> KorisniciLista { get; set; } = new ObservableCollection<Korisnici>();

@@ -12,14 +12,14 @@ using Xamarin.Forms;
 
 namespace eProdaja.MobileApp.ViewModels
 {
-    [QueryProperty(nameof(KorisnikID), nameof(KorisnikID))]
-    public class NewKorisnikVM:BaseViewModel
+
+    public class NewKorisnikVM : BaseViewModel
     {
         private readonly APIService _service = new APIService("Korisnik");
         private readonly APIService _service2 = new APIService("Uloge");
+
         public KorisniciInsert _request { get; set; }
         public ObservableCollection<Uloge> Uloge { get; set; } = new ObservableCollection<Uloge>();
-        public string KorisnikID { get; set; }
         
         public NewKorisnikVM()
         {
@@ -30,14 +30,8 @@ namespace eProdaja.MobileApp.ViewModels
         }
 
         public async Task Init() 
-            {
-                if (KorisnikID != null)
-                {
-                    var korisnik = await _service.GetById<Model.Korisnici>(KorisnikID);
-                    _request.Ime = korisnik.Ime; _request.Prezime = korisnik.Prezime; _request.Email = korisnik.Email;
-                    _request.Telefon = korisnik.Telefon;
-                }
-                var list =await _service2.Get<IEnumerable<Model.Uloge>>(null);
+        {
+            var list =await _service2.Get<IEnumerable<Model.Uloge>>(null);
             
             Uloge.Clear();
             foreach (var x in list)
@@ -58,13 +52,7 @@ namespace eProdaja.MobileApp.ViewModels
                 if (x.IsChecked)
                     _request.Uloge.Add(x.UlogaId);
             }
-            if(KorisnikID != null)
-            {
-                await _service.Update<Model.Korisnici>(KorisnikID, _request);
-                await Application.Current.MainPage.DisplayAlert("", "Korisnik ažuriran !", "OK");
-                await Shell.Current.GoToAsync("Page2");
-                return;
-            }
+           
             await _service.Insert<Model.Korisnici>(_request);
             await Application.Current.MainPage.DisplayAlert("", "Korisnik sačuvan !", "OK");
 

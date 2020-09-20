@@ -97,6 +97,7 @@ namespace eProdaja.Model
             services.AddScoped<IGeneric<Model.VrsteProizvoda,object>, GenericService<Model.VrsteProizvoda,Database.VrsteProizvoda,object>>();
             services.AddScoped<ICRUD<Model.Proizvod, ProizvodSearchRequest, ProizvodUpsertRequest, ProizvodUpsertRequest>, ProizvodService>();
             services.AddScoped<IGeneric<Model.Uloge, object>, GenericService<Model.Uloge, Model.Database.Uloge, object>>();
+            services.AddScoped<IKorisniciUloge, KorisniciUlogeService>();
             var connection = @"Server=NH;Database=eProdaja;Trusted_Connection=True;";
 
             services.AddDbContext<eProdajaContext>(options => options.UseSqlServer(connection)); 

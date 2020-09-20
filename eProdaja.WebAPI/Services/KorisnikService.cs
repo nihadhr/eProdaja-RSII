@@ -38,7 +38,7 @@ namespace eProdaja.Model.Services
                 list = list.Where(a => a.Prezime.StartsWith(request.KorisnickoIme));
             }
 
-            return _mapper.Map<List<Model.Korisnici>>(list.ToList());
+            return _mapper.Map<List<Model.Korisnici>>(list.Include(a=>a.KorisniciUloge).ToList());
 
         }
         public Model.Korisnici Authenticiraj(string username, string pass)

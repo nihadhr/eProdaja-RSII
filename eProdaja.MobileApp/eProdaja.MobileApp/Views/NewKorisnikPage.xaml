@@ -13,9 +13,9 @@
             
     <StackLayout Spacing="3" Padding="20">
             <Label Text="Ime" FontSize="Small" />
-            <Entry Text="{Binding _request.Ime}" FontSize="Small" />
+                <Entry Text="{Binding _request.Ime}" FontSize="Small" />
             <Label Text="Prezime" FontSize="Small" />
-        <Editor Text="{Binding _request.Prezime}" AutoSize="TextChanges" FontSize="Small" Margin="0" />
+                <Editor Text="{Binding _request.Prezime}" AutoSize="TextChanges" FontSize="Small" Margin="0" />
             <Label Text="Email" FontSize="Small" />
         <Entry IsSpellCheckEnabled="False" Text="{Binding _request.Email}" FontSize="Small" />
             <Label Text="Telefon" FontSize="Small" />

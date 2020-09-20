@@ -18,7 +18,8 @@ namespace eProdaja.MobileApp
             Routing.RegisterRoute(nameof(Page1), typeof(Page1));
             Routing.RegisterRoute(nameof(Page2), typeof(Page2));
             Routing.RegisterRoute(nameof(NewKorisnikPage), typeof(NewKorisnikPage));
-            
+            Routing.RegisterRoute(nameof(KorisnikDetailPage), typeof(KorisnikDetailPage));
+
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

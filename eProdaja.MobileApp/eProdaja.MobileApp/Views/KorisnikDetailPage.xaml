@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eProdaja.MobileApp.Views.KorisnikDetailPage">
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView>
+
+                <StackLayout Spacing="3" Padding="20">
+                    <Label Text="Ime" FontSize="Small" />
+                    <Entry Text="{Binding Ime}" FontSize="Small" />
+                    <Label Text="Prezime" FontSize="Small" />
+                    <Editor Text="{Binding Prezime}" AutoSize="TextChanges" FontSize="Small" Margin="0" />
+                    <Label Text="Email" FontSize="Small" />
+                    <Entry IsSpellCheckEnabled="False" Text="{Binding Email}" FontSize="Small" />
+                    <Label Text="Telefon" FontSize="Small" />
+                    <Entry Text="{Binding Telefon}" FontSize="Small" />
+                    <Label Text="Korisnicko ime" FontSize="Small" />
+                    <Entry Text="{Binding Korisnicko}" FontSize="Small" />
+                    <Label Text="Password" FontSize="Small" />
+                    <Entry IsPassword="True" Text="{Binding Password}" FontSize="Small" />
+                    <Label Text="Password confirmation" FontSize="Small" />
+                    <Entry IsPassword="True" Text="{Binding PasswordConfirmation}" FontSize="Small" />
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Aktivan" FontSize="Small" />
+                        <CheckBox IsChecked="{Binding Aktivan}"></CheckBox>
+                    </StackLayout>
+                    <Label Text="Uloge" FontSize="Small" />
+
+                    <Grid>
+                        <ListView ItemsSource="{Binding Uloge}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding IsChecked}">
+                                            </CheckBox>
+                                            <Label Text="{Binding Naziv}"></Label>
+                                        </StackLayout>
+                                    </ViewCell>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Otkaži" Command="{Binding Cancel}" HorizontalOptions="FillAndExpand"></Button>
+                        <Button Text="Spremi" Command="{Binding Save}" HorizontalOptions="FillAndExpand"></Button>
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
