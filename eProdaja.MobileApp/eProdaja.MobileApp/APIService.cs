@@ -82,6 +82,10 @@ namespace eProdaja.MobileApp
 
             return await url.WithBasicAuth(Username, Password).PutJsonAsync(rikvest).ReceiveJson<T>();
         }
-
+        public async Task<T> Delete<T>(object id)
+        {
+            var url = $"{_apiURL}/{_route}/{id}";
+            return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<T>();
+        }
     }
 }

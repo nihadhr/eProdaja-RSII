@@ -42,6 +42,11 @@ namespace eProdaja.Model.Controllers
         {
             return _korisnik.Insert(request);
         }
+        [HttpDelete("{id}")]
+        public Model.Korisnici Delete(int id)
+        {
+          return _korisnik.Delete(id);
+        }
 
     } 
 }

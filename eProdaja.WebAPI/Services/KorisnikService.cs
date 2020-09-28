@@ -105,6 +105,18 @@ namespace eProdaja.Model.Services
             var obj = _database.Korisnici.Find(id);
             return _mapper.Map<Model.Korisnici>(obj);
         }
+        public Korisnici Delete(int id)
+        {
+            var obj = _database.Korisnici.Find(id);
+       
+            var list = _database.KorisniciUloge.Where(a => a.KorisnikId == obj.KorisnikId);
+            _database.KorisniciUloge.RemoveRange(list);
+            _database.SaveChanges();
+            _database.Korisnici.Remove(obj);
+            _database.SaveChanges();
+            return _mapper.Map<Model.Korisnici>(obj);
+
+        }
 
         public Korisnici Update(int id,KorisniciInsert rikvest)
         {

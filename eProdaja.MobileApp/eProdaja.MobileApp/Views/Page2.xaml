@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="eProdaja.MobileApp.Views.Page2"
-             xmlns:vm="clr-namespace:eProdaja.MobileApp.ViewModels">
+             xmlns:vm="clr-namespace:eProdaja.MobileApp.ViewModels" xmlns:d="http://xamarin.com/schemas/2014/forms/design">
     <ContentPage.BindingContext>vm:KorisniciVM</ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>
@@ -37,8 +37,15 @@
                                 CommandParameter="{Binding}">
                                         </TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
-                              
-                         </StackLayout>
+                                <d:StackLayout.GestureRecognizers>
+                                    <SwipeGestureRecognizer 
+                                Direction="Left"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:KorisniciVM}}, Path=KorisnikSwipped}"		
+                                CommandParameter="{Binding}">
+                                    </SwipeGestureRecognizer>
+                                </d:StackLayout.GestureRecognizers>
+
+                            </StackLayout>
 
                         </ViewCell>
                     </DataTemplate>

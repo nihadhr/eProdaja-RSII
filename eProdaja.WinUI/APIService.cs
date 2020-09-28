@@ -68,6 +68,7 @@ namespace eProdaja.WinUI
 
             return await url.WithBasicAuth(Username, Password).PutJsonAsync(rikvest).ReceiveJson<T>();
         }
+     
 
     }
 }

@@ -14,5 +14,6 @@ namespace eProdaja.Model.Services
         public Model.Korisnici GetById(int id); 
         public Model.Korisnici Update(int id,KorisniciInsert rikvest);
         public Model.Korisnici Authenticiraj(string username, string pass);
+        public Model.Korisnici Delete(int id);
     }
 }
