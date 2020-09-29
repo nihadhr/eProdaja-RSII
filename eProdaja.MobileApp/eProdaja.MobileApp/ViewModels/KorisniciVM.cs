@@ -48,6 +48,7 @@ namespace eProdaja.MobileApp.ViewModels
             if (answer)
             {
               var user= await _service.Delete<Model.Korisnici>(obj.KorisnikId);
+                KorisniciLista.Remove(obj);
                await App.Current.MainPage.DisplayAlert("Delete user", "User is deleted !","OK");
             }
             //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");

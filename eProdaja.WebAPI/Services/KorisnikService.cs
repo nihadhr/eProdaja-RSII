@@ -108,6 +108,7 @@ namespace eProdaja.Model.Services
         public Korisnici Delete(int id)
         {
             var obj = _database.Korisnici.Find(id);
+            if(obj == null) { return new Korisnici { Ime = "Blank", Prezime = "Blank", KorisnickoIme = "Blank" }; }
        
             var list = _database.KorisniciUloge.Where(a => a.KorisnikId == obj.KorisnikId);
             _database.KorisniciUloge.RemoveRange(list);
